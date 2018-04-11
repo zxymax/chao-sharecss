@@ -1,0 +1,149 @@
+html,body{
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+.container{
+	width: 100%;
+	height: 100%;
+	border: 1px solid #f0f;
+	padding: 5px;
+}
+.default{
+	border: 1px solid #ff0000;
+	margin: 0 auto;
+	height: 50px;
+	width: 80px;
+}
+.clearfix{
+	display: block;
+	clear: both;
+	content: "";
+	border: 1px solid #f0f;
+	padding: 5px;
+}
+.clearfix:after{
+	zoom:1;
+}
+
+.center{
+	float: left;
+	position: absolute;
+	width: 200px;
+	height: 100px;
+	left: 50%;
+	top: 50%;
+	margin: -50px 0 0 -100px;
+}
+.black{
+	border: 1px solid #000;
+	position: absolute;
+	width: 200px;
+	height: 100px;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+}
+.display-style>div{
+	border: 1px solid #000;
+	margin: 5px;
+}
+.display-style span{
+	background-color: red;
+	margin: 5px;
+}
+.inline-block span{
+	display: inline-block;
+	width: 100px;
+	height: 50px;
+	line-height: 50px;
+}
+.list-item span{
+	display: list-item;
+}
+.table span{
+	display: table;
+}
+
+.position{
+	height: 100%;
+	position: relative;
+	top: 0;
+	left: 0;
+}
+.position h2{
+	position: absolute;
+	bottom: 10px;
+	right: 30px;
+}
+.position h3{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+}
+.css3-characteristic>div{
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}
+
+.css3-characteristic .face{
+
+	background: rgba(0,0,0,.6);
+}
+.css3-characteristic .bg-image{
+	background-image: url(http://y1.ifengimg.com/e6ce10787c9a3bdb/2013/0821/rdn_52144df27a9eb.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: -67px 0;
+	background-origin: 
+}
+
+.css3-characteristic .bg-origin {
+	width: 900px;
+	height: 300px;
+	background-image: url(http://i5.265g.com/images/201503/201503251621295358.jpg);
+	background-repeat: no-repeat;
+	border-radius: 0;
+	
+	padding: 30px;
+	border: 5px solid #ccc;
+}
+.padding-box{
+	 background-origin: padding-box;
+}
+.content-box{
+	background-origin: content-box;
+}
+.border-box{
+	background-origin: border-box;
+}
+@font-face{
+	font-family: diyFonts;
+	src: url(fonts/Bullet_Rain.otf);
+}
+.word-wrap{
+	width: 700px;
+	border: 2px solid blue;
+	word-wrap: break-word;
+	text-shadow: 5px 5px 5px #ff00ff;
+	font-family: diyFonts 
+}
+.border-image{
+	width: 200px;
+	height: 100px;
+	border: 10px solid transparent;
+	border-image: url(http://i5.265g.com/images/201503/201503251621295358.jpg) 30 round;
+	box-shadow: 10px 10px 5px #f0f;
+}
+
+.media-css{
+	width: 1200px;
+	height: 50px;
+	background-color: red;
+}
+@media screen and (max-width: 600px) {
+	.media-css{
+		background-color: blue;
+	}
+}
