@@ -1,0 +1,91 @@
+.css-animation{
+	width: 100px;
+	height: 100px;
+	background-color: red;
+	position: relative;
+	animation: mymove 5s infinite;
+	animation-timing-function: linear;
+}
+@keyframes mymove {
+	from {
+		top: 0px;
+	}
+	to {
+		top: 100px;
+	}
+}
+
+#jsanimate{
+	position: absolute;
+
+}
+
+
+.withautofix{
+	display: flex;
+
+}
+.withautofix .left{
+	background-color: blue;
+	height: 200px;
+	flex: 1;
+}
+.withautofix .right{
+	background-color: red;
+	height: 200px;
+	width: 500px;
+}
+
+.withautofix2{
+	height: 200px;
+}
+.withautofix2 .left{
+	float: right;
+	width: 200px;
+	height: 200px;
+	background-color: blue;
+}
+.withautofix2 .right{
+	margin-right: 200px;
+	background-color: red;
+	height: 200px;
+}
+.conrelative{
+	position: relative;
+}
+.centervertical{
+	width: 200px;
+	height: 100px;
+	background-color: red;
+	position: absolute;
+}
+.type-1,.type-2,.type-3,.type-4{
+	position: relative;
+}
+.type-1 div{
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+}
+.type-2 div{
+	left: 50%;
+	top: 50%;
+	margin: -50px 0 0 -100px;
+}
+.type-3 div{
+	margin: auto;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+}
+.type-4{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.removed-uplicates{
+	background-color: #5a4f4f;
+	color: #fff;
+}

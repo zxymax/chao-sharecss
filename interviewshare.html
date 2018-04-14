@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="interviewshare.css">
+</head>
+
+<body>
+	<ul>
+		<li><a href="index.html">CSS总结</a></li>
+	</ul>
+  <div class="container">
+    <h2>使用css实现一个持续的动画效果</h2>
+    <div class="default css-animation">default css style</div>
+  </div>
+  <div class="container">
+    <h2>使用js实现一个持续的动画效果</h2>
+    <div class="default" id="jsanimate"></div>
+  </div>
+  <div class="container">
+    <div class="withautofix">
+      <div class="left">left-fix</div>
+      <div class="right">right-auto</div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="withautofix2">
+      <div class="left"></div>
+      <div class="right"></div>
+    </div>
+  </div>
+
+  <div class="container  type-1">
+  	  <h2>水平垂直居中</h2>
+    <div class="centervertical">
+      transform:translate(-50%, -50%)
+    </div>
+  </div>
+  <div class="container type-2">
+    <div class="centervertical">
+      margin: -50 0 0 -50%
+    </div>
+  </div>
+  <div class="container type-3">
+    <div class="centervertical">
+      left:0;top:0;right:0;bottom:0;
+    </div>
+  </div>
+  <div class="container type-4">
+    <div class="centervertical">
+      display:flex; justiy-content: center; align-items:center;
+    </div>
+  </div>
+
+  <div class="container">
+  	<h2>四种定位的区别</h2>
+  	<pre>
+  		static 是默认值
+
+relative 相对定位 相对于自身原有位置进行偏移，仍处于标准文档流中
+
+absolute 绝对定位 相对于最近的已定位的祖先元素, 有已定位(指 position不是 static的元素)祖先元素, 以最近的祖先元素为参考标准。如果无已定位祖先元素, 以 body元素为偏移参照基准, 完全脱离了标准文档流。
+
+fixed 固定定位的元素会相对于视窗来定位,这意味着即便页面滚动，它还是会停留在相同的位置。一个固定定位元素不会保留它原本在页面应有的空隙。
+  	</pre>
+  </div>
+<div class="container">
+	<h2>一行代码实现数组去重？</h2>
+	<p class="removed-uplicates">arr:<span>1,2,1,2,4,5,'b','b','a'</span></p>
+	<p class="removed-uplicates">方法一：newarr1: <span id="sp1"></span></p>
+	<p class="removed-uplicates">方法二：newarr2: <span id="sp2"></span></p>
+	<p class="removed-uplicates">方法二：newarr3: <span id="sp3"></span></p>
+</div>
+<div class="container">
+	<h2>模拟Vue双向数据绑定</h2>
+	<input type="text" id="text">
+	<p id="showtext"></p>
+	<ul>
+		<li></li>
+	</ul>
+</div>
+  <script>
+  // js实现动画效果
+  /*
+  	1。定义标识位flag left的初始值0
+  	2. 判断left值是否为0或100 改变flag
+  	3. 以flag为存在依据 改变元素的left值
+  */
+  window.requestAnimFrame = (function() {
+    return window.requestAnimationFrame ||
+      window.webkitRequestAnimationFrame ||
+      window.mozRequestAnimationFrame ||
+      function(callback) {
+        window.setTimeout(callback, 1000 / 60)
+      }
+  })()
+  var jsAnimate = document.getElementById('jsanimate');
+  //alert(jsAnimate)
+  var flag = true,
+    left = 0;
+
+  function getAnimation() {
+    left == 0 ? flag = true : left == 100 ? flag = false : '';
+    flag ? jsAnimate.style.left = `${left++}px` :
+      jsAnimate.style.left = `${left--}px`
+  }
+
+  (function animloop() {
+    getAnimation();
+    requestAnimFrame(animloop)
+  })()
+    var sp1 = document.getElementById('sp1')
+  	var arr = [1,2,1,2,4,5,'b','b','a'];
+  	// 1.通过遍历数组
+  	function typesRemovedUplicates1(){
+  		let n = [];
+  		for( let i= 0; i<arr.length; i++){
+  			if(n.indexOf(arr[i])==-1)
+  			  n.push(arr[i])
+  		}
+  		return n;
+  	}
+  	sp1.innerHTML = typesRemovedUplicates1();
+
+  	// 2. 对象键值对
+  	function typesRemovedUplicates2(arr) {
+  		let n = {}, r= [], len= arr.length, val, type;
+  		for(let i= 0; i<arr.length; i++){
+  			val= arr[i];
+  			type = typeof val;
+  			if(!n[val]){
+  				n[val] = [type];
+  				r.push(val)
+  			}else if(n[val].indexOf(type)<0){
+  				n[val].push(type);
+  				r.push(val);
+  			}
+  		}
+  		return n;
+  	}
+  	sp2.innerHTML = typesRemovedUplicates2(arr);
+  	
+  	// 3.数组下标判断法
+  	function typesRemovedUplicates3(arr){
+  		let n = [arr[0]];
+  		for(let i= 1; i<arr.length; i++){
+  			if(arr.indexOf(arr[i])==i)
+  				n.push(arr[i])
+  		}
+  		return n;
+  	}
+  	sp3.innerHTML = typesRemovedUplicates3(arr);
+
+
+  	// 模拟Vue双向数据绑定
+  	function simulationDataBinding() {
+  		let obj= {};
+  		Object.defineProperty(obj, 'text', {
+  			get() {
+  				return obj;
+  			},
+  			set(newValue) {
+  				document.getElementById('text').value = newValue;
+  				document.getElementById('showtext').innerHTML = newValue;
+  			}
+  		});
+  		
+  		document.addEventListener('keyup', (e)=>{
+  			obj.text = e.target.value;
+  		})
+
+  	}
+  	simulationDataBinding();
+
+
+  </script>
+</body>
+
+</html>
